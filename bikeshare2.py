@@ -212,6 +212,7 @@ def user_stats_birth(df):
     earliest_year = birth_year.min()
     print("The most earliest birth year:", earliest_year)
 
+'''
 def table_stats(df, city):
     """Displays statistics on bikeshare users."""
     print('\nCalculating Dataset Stats...\n')
@@ -223,8 +224,19 @@ def table_stats(df, city):
     # counts the number of missing values in the User Type column
     number_of_missing_values = np.count_nonzero(df['User Type'].isnull())
     print("The number of missing values in the \'User Type\' column: {}".format(number_of_missing_values))
+'''
 
+def raw_data(df):
+    user_input = raw_input('Do you want to see raw data? Enter yes or no.\n')
+    line_number = 0
 
+    while 1 == 1 :
+        if user_input.lower() != 'no':
+            print(df.iloc[line_number : line_number + 5])
+            line_number += 5
+            user_input = raw_input('\nDo you want to see more raw data? Enter yes or no.\n')
+        else:
+            break    
         
 def main():
     while True:
@@ -235,9 +247,9 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-        table_stats(df, city)
-
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
+        raw_data(df)
+        
+        restart = raw_input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
 
